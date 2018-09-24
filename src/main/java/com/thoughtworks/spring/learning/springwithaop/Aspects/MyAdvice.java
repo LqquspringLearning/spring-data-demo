@@ -36,11 +36,14 @@ public class MyAdvice {
     }
 
 
-    // @Around(value = "@annotation(com.thoughtworks.spring.learning.springwithaop.Services.LogService)")
+     @Around(value = "@annotation(com.thoughtworks.spring.learning.springwithaop.Services.LogService)")
     public void aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         proceedingJoinPoint.proceed();
-        logger.getLog().add("around");
+        logger.getLog().add("around method");
     }
-
+    @Around(value = "execution(* logService2(..))")
+    public void aroundAdviceWithoutProceed(){
+        logger.getLog().add("around method continue");
+    }
 
 }

@@ -13,4 +13,8 @@ public class MyService {
     public void logService() {
         logger.getLog().add("method execute");
     }
+
+    public void logService2(){
+        logger.getLog().add("method logService2");
+    }
 }
