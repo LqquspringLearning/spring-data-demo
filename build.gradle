@@ -1,0 +1,51 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.5.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.thoughtworks.spring.learning'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+test {
+    useJUnitPlatform {
+        // includeEngines 'junit-jupiter', 'junit-vintage'
+        // excludeEngines 'custom-engine'
+
+        // includeTags 'fast'
+        excludeTags 'slow'
+    }
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.3.1")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+    compile("org.springframework:spring-aop:5.1.0.RELEASE")
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.1.0.RELEASE'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.12'
+    compile group: 'org.flywaydb.flyway-test-extensions', name: 'flyway-spring-test', version: '5.0.0'
+    compile group: 'org.flywaydb', name: 'flyway-core', version: '5.1.4'
+
+}
