@@ -42,4 +42,6 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("org.junit.jupiter:junit-jupiter-api:5.3.1")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+    compile group: 'org.springframework', name: 'spring-aspects', version: '3.2.4.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version: '5.1.0.RELEASE'
 }
