@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: qa
   datasource:
     url: 'jdbc:mysql://localhost:3306/grad_step'
     password: 'join-town'
