@@ -4,10 +4,16 @@ buildscript {
     }
     repositories {
         mavenCentral()
+
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'com.h2database:h2:1.4.191'
     }
+}
+
+plugins {
+    id "org.flywaydb.flyway" version "5.1.4"
 }
 
 apply plugin: 'java'
@@ -15,6 +21,13 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+
+
+flyway {
+    url = 'jdbc:mysql://localhost:3306/grad_step'
+    user = 'root'
+    password = 'join-town'
+}
 
 group = 'com.thoughtworks.spring.learning'
 version = '0.0.1-SNAPSHOT'
@@ -47,17 +60,13 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-aop')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("org.junit.jupiter:junit-jupiter-api:5.3.1")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.1")
-    compile("org.springframework:spring-aop:5.1.0.RELEASE")
-    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.1.0.RELEASE'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.12'
-    compile group: 'org.flywaydb.flyway-test-extensions', name: 'flyway-spring-test', version: '5.0.0'
     compile group: 'org.flywaydb', name: 'flyway-core', version: '5.1.4'
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("com.h2database:h2")
-    compile group: 'org.springframework', name: 'spring-orm', version: '5.1.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version: '5.1.0.RELEASE'
 
 }
