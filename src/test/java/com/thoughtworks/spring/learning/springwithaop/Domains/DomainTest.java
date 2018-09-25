@@ -35,4 +35,10 @@ public class DomainTest {
         RolePrivilege rolePrivilege = new RolePrivilege();
         assertThat(rolePrivilege.getId()).isZero();
     }
+
+    @Test
+    void should_create_a_address() {
+        Address addr = new Address();
+        assertThat(addr.getId()).isZero();
+    }
 }

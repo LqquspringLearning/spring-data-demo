@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -22,4 +23,15 @@ public class User {
     @OneToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
+
+    // method one
+    //@OneToMany(mappedBy = "user")
+    //private List<Address> addressList;
+
+
+    //method two
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Address> addressList;
 }
